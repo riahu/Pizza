@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="bg"></div>
-            <div class="container">
+        <div class="container">
             <nav class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".pizza-navbar-menu">
@@ -32,87 +32,22 @@
                     </ul>
                 </div>
             </nav>
+
             <div id="center">
-
-            <h2>we deliver only within the Seattle city limits, and only from noon to 11:00pm. We accept cash or credit cards on delivery.</p>
-
-            <div class="row">
-                <div class="col-md-4 col-md-push-8">
-                    <h2>Your Cart</h2>
-                    <div class="cart-items-container"></div>
-                    <div class="cart-footer">
-                        <div class="row total-row">
-                            <div class="col-xs-10">
-                                Total:
-                            </div>
-                            <div class="col-xs-2">
-                                $<span class="total-price"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 button-row">
-                                <button type="button" class="btn btn-primary place-order">Place My Order</button>
-                            </div>
-                        </div>                        
-                    </div>
-                </div>
-                <div class="col-md-8 col-md-pull-4">
-                    <div class="movies-container"></div>        
-                </div>
-            </div>
-
-        </div> <!-- .container -->
-
-        <div class="templates">
-
-            <!-- movie template -->
-            <div class="movie-template movie clearfix">
-
-                <img class="pic" src="" alt="">
-                <h2 class="title"></h2>
-
-                <p class="format-template">
-                    <button type="button" class="btn btn-default add-to-cart">
-                        Buy on <img src="" alt="logo for format" class="format-logo"> 
-                        for $<span class="format-price"></span>
-                    </button>
-                </p>
-
-            </div>
-
-            <!-- cart item template -->
-            <div class="cart-item-template cart-item row">
-                <div class="col-xs-10">
-                    <p><button type="button" class="btn btn-default btn-xs remove-item">&times;</button> 
-                        <span class="title"></span> (<span class="formatLabel"></span>)
-                    </p>
-                </div>
-                <div class="col-xs-2 col-price">
-                    <p>$<span class="price"></span></p>
-                </div>
-            </div>
-
-        </div>
-
-                <a href="menu.html"><img src="img/logo.png" alt="Dawg Pizza Logo" class="logo"></a>
+            
             </div>
         </div>
         <footer>
             <p>Call us for delivery: 206-555-1212 || Copyright &copy; Victoria Hu 2013 || All rights reserved || <a href="https://github.com/riahu/2.0/tree/3.0">Repository</a></p>
         </footer>
 
+        <form id="cart-form" action="http://dawgpizza.com/orders/" method="POST" role="form">
+            <input id="cart-input" type="hidden" name="cart">
+        </form>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/events.js"></script>
-        <script src="js/models.js"></script>
-        <script src="js/views.js"></script>
-        <script src="js/movies.js"></script>
-        <script src="js/movieView.js"></script>
-        <script src="js/moviesView.js"></script>
-        <script src="js/cart.js"></script>
-        <script src="js/cartItemView.js"></script>
-        <script src="js/cartView.js"></script>
-        <script src="js/controller.js"></script>
+
+        <script src="http://www.dawgpizza.com/orders/menu.js"></script>
     </body>
 </html>

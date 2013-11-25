@@ -12,7 +12,9 @@ function createCartView(config) {
         config.templateView = createCartItemView(config);
         var view = createTemplateListView(config);
         view.afterRender = function() {
-                this.totalPrice.html(this.model.getTotalPrice());
+            this.subtotal.html(this.model.getSubTotal());
+            this.tax.html(this.model.getTax());
+            this.total.html(this.model.getTotal());
         }; //afterRender()
         return view;
 } //createCartView()
