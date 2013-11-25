@@ -34,14 +34,137 @@
             </nav>
 
             <div id="center">
+            <div>
+                <h1>Order Online!</h1>
+                <h3>We deliver only within Seattle city limits, only from noon to 11 PM.</h3>
+                <h3>We accept cash or credit cards on delivery!</h3>
+                <hr>
+                <h2>PIZZAS</h2>                
+            </div>  
             
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="order menu">
+                        <div class="row">
+                            
+                            <div class="meat">
+                                <h2>MEAT PIES</h2>
+                            </div>
+                                
+                            <div class="veg">
+                                <h2>VEGETARIAN PIES</h2>
+                            </div>                                 
+                            <dl>
+                                <div class="template-pizza">
+                                    <dt class="name"></dt>
+                                    <dd><span class="description"></span> <br><span class="price small"></span><span class="price medium"></span><span class="price large"></span><dd>        
+                                </div>
+                            </dl>   
+                        </div>                             
+
+                        <h2>DRINKS</h2>
+                            <div class="drinks"></div>
+                            <ul class="drink-list">
+                                <div class="template-drinks">
+                                    <li><span class="name"></span> <span class="price"></span></li>
+                                </div>
+                            </ul>                             
+
+                        <h2>DESSERTS</h2>
+                            <div class="desserts"></div>
+                            <ul class="dessert-list">
+                                <div class="template-desserts">
+                                    <li><span class="name"></span> <span class="price"></span></li>
+                                </div>  
+                            </ul>
+                    </div>
+                </div> 
+
+                <div class="col-md-4 scroll">
+                    <div class="fixed">
+                        <h2>Your Cart</h2>
+                        <div class="cart-items-container"></div>
+                        <div class="cart-footer">
+                            <div class="row">
+                                <div class="col-xs-9">SubTotal:</div>
+                                <div class="col-xs-2">$<span class="subtotal-price"></span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-9">Tax:</div>
+                                <div class="col-xs-2">$<span class="tax-price"></span></div>
+                            </div>
+                            <div class="row total-row">
+                                <div class="col-xs-9">Total:</div>
+                                <div class="col-xs-2">$<span class="total-price"></span></div>
+                                <div class="minimum"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 button-row">
+                                    <button type="button" class="btn btn-primary start-over">Start Over</button>
+                                </div>
+                                <div class="col-xs-6 button-row">
+                                    <button type="button" class="btn btn-primary place-order">Place My Order</button>
+                                </div>
+                            </div>                        
+                        </div>
+
+                        <div class="cart-template"></div>
+
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="modal fade" id="submitOrderForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="modalTitle">Let's get this pizza to you pronto.</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="http://dawgpizza.com/orders/" class="address-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control form-name" placeholder="We take funny ones too!" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control form-line1" placeholder="Example: P. Sherman 42 Wallaby Lane" required>
+                                <input type="text" class="form-control form-line2" placeholder="Seattle, WA (This is optional~)">
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-3">
+                                    <label for="zip">Zip Code</label>
+                                    <input type="number" class="form-control form-zip" min="10000" max="99999" placeholder="Zip Code" required>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" class="form-control form-phone" placeholder="Phone Number" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary finalSubmitButton">
+                            Submit Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <footer>
-            <p>Call us for delivery: 206-555-1212 || Copyright &copy; Victoria Hu 2013 || All rights reserved || <a href="https://github.com/riahu/2.0/tree/3.0">Repository</a></p>
+            <p>Call us for delivery: 206-555-1212 || Copyright &copy; Victoria Hu 2013 || All rights reserved || <a href="https://github.com/riahu/Pizza">Repository</a></p>
         </footer>
 
-        <form id="cart-form" action="http://dawgpizza.com/orders/" method="POST" role="form">
+        <form id="cart-form" action="http://dawgpizza.com/orders/" method="POST">
             <input id="cart-input" type="hidden" name="cart">
         </form>
 
@@ -49,5 +172,6 @@
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
         <script src="http://www.dawgpizza.com/orders/menu.js"></script>
+        <script src="js/gdi.js"></script>
     </body>
 </html>
