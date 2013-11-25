@@ -86,7 +86,7 @@
             size: this.getAttribute('data-size'),
             price: this.getAttribute('data-price')
         };
-        cart.items.push(newCartItem);       
+        cart.items.push(newCartItem);
         total = parseInt(this.getAttribute('data-price')) + total;
         renderCart(cart, $('.cart-items-container'));
     });
@@ -95,7 +95,6 @@
         if(total >= 20) {
             $("#submitOrderForm").modal();        
             $(".finalSubmitButton").click(function() {
-                setData();
                 postCart(cart, $('.cart-form'));
             });
             $(".minimum").html("");
@@ -108,7 +107,7 @@
         Resets everything when the "Clear Cart" button is pressed.
         Cart returns to default state, empty and 0.00.
     */
-    $(".start-over").click(function() {
+    $('.start-over').click(function() {
         cart = {
             name: null,
             address1: null,
@@ -160,19 +159,6 @@ function renderCart(cart, container) {
     });
 
 } //renderCart()
-
-function setData() {
-    cart = {
-        name : $(".form-name").val(),
-        address1 : $(".form-line1").val(),
-        address2 : $(".form-line2").val(),
-        zip : $(".form-zip").val(),
-        phone : $(".form-phone").val(),
-    }
-    $("#jsonForm").val(JSON.stringify(cart));
-    $(".cart-form").find('[type="submit"]').trigger("click");
-}
-
 // postCart()
 // posts the cart model to the server using
 // the supplied HTML form
