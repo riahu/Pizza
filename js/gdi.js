@@ -69,10 +69,6 @@
     //the properties we eventually need to post to
     //the server
     var cart = {
-        name: null,
-        address1: null,
-        zip: null,
-        phone: null,
         items: [] //empty array
     }; //cart data
 
@@ -92,15 +88,31 @@
     });
 
     $('.place-order').click(function(){
-        if(total >= 20) {
-            $("#submitOrderForm").modal();        
-            $(".finalSubmitButton").click(function() {
-                postCart(cart, $('.cart-form'));
-            });
-            $(".minimum").html("");
-        } else {
-            $(".minimum").html("Oops! There's a $20 minimum purchase :(");
-        }
+        var signupForm = $('form');
+        var reqFields = ["name", "addr-1", "zip", "phone"];
+        var reqField;
+        var reqValue;
+        for (var i = 0; i < reqFields.length; i++) {
+            var fieldName = reqFields[i];
+            reqField = signupForm.find('input[name="' + fieldName + '"]');
+            reqValue = reqField.val().trim();
+            if (0 === reqValue.length) {
+                alert('You must enter your ' + reqField.attr('placeholder') + '!');
+                return false;
+            }
+        }  
+        var info = {
+            address1: signupForm.find('input[name="addr-1"]').val(),
+            address2: signupForm.find('input[name="addr-2"]').val(),
+            name: signupForm.find('input[name="name"]').val(),
+            zip: signupForm.find('input[name="zip"]').val(),
+            phone: signupForm.find('input[name="phone"]').val(),
+            items: JSON.parse(JSON.stringify(cart.items))
+        };
+        var json = JSON.stringify(info);
+        localStorage.setItem('cart', JSON.stringify(cart.items));
+        signupForm.find('input[name="cart"]').val(json);
+        signupForm.submit();
     });
 
     /*
@@ -109,13 +121,17 @@
     */
     $('.start-over').click(function() {
         cart = {
-            name: null,
-            address1: null,
-            zip: null,
-            phone: null,
             items: [] //empty array
         }
         renderCart(cart, $('.cart-items-container'));
+    });
+
+    $('.last-order').click(function() {
+        var cartJSON = localStorage.getItem('cart');
+        if (cartJSON && cartJSON.length > 0) {
+            cart.items = JSON.parse(cartJSON);
+        }
+        renderCart(cart, $('.cart-items-container'))
     });
 }); //doc ready
 
@@ -159,17 +175,3 @@ function renderCart(cart, container) {
     });
 
 } //renderCart()
-// postCart()
-// posts the cart model to the server using
-// the supplied HTML form
-// parameters are:
-//  - cart (object) reference to the cart model
-//  - cartForm (jQuery object) reference to the HTML form
-//
-function postCart(cart, cartForm) {
-    //find the input in the form that has the name of 'cart'    
-    //and set it's value to a JSON representation of the cart model
-    cartForm.find('input[name="cart"]').val(JSON.stringify(cart));
-    //submit the form--this will navigate to an order confirmation page
-    cartForm.submit();
-} //postCart()
